@@ -1,0 +1,23 @@
+// Motion Activated Light using PIR sensor
+
+const int pirPin = 2;     // PIR sensor output
+const int ledPin = 13;    // LED indicator
+
+void setup() {
+  pinMode(pirPin, INPUT);
+  pinMode(ledPin, OUTPUT);
+  Serial.begin(9600);
+  Serial.println("Motion Sensor Initialized");
+}
+
+void loop() {
+  int motion = digitalRead(pirPin);
+  if (motion == HIGH) {
+    digitalWrite(ledPin, HIGH);
+    Serial.println("Motion Detected! Light ON");
+  } else {
+    digitalWrite(ledPin, LOW);
+    Serial.println("No Motion");
+  }
+  delay(1000);
+}
